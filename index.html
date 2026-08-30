@@ -176,17 +176,29 @@
         <div class="persona-halo" aria-hidden="true"></div>
         <svg class="persona-illustration" viewBox="0 0 200 220" role="img" aria-label="Illustrated portrait representing an Amazon and eBay e-commerce professional">
           <defs>
+            <radialGradient id="stageGlow" cx="50%" cy="38%" r="65%">
+              <stop offset="0%" stop-color="#1c2440"/>
+              <stop offset="100%" stop-color="#0a0e1c" stop-opacity="0"/>
+            </radialGradient>
             <linearGradient id="suitGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stop-color="#161d33"/>
+              <stop offset="0%" stop-color="#1a2138"/>
               <stop offset="100%" stop-color="#0a0e1c"/>
             </linearGradient>
-            <linearGradient id="headGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-              <stop offset="0%" stop-color="#e7c9a9"/>
-              <stop offset="100%" stop-color="#caa27e"/>
+            <linearGradient id="lapelGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#2a355c"/>
+              <stop offset="100%" stop-color="#161d33"/>
+            </linearGradient>
+            <linearGradient id="headGrad" x1="0%" y1="0%" x2="20%" y2="100%">
+              <stop offset="0%" stop-color="#f0d3b4"/>
+              <stop offset="100%" stop-color="#c99a72"/>
+            </linearGradient>
+            <linearGradient id="hairGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="#3c3226"/>
+              <stop offset="100%" stop-color="#241d16"/>
             </linearGradient>
             <linearGradient id="collarGrad" x1="0%" y1="0%" x2="100%" y2="100%">
               <stop offset="0%" stop-color="#FFDA92"/>
-              <stop offset="100%" stop-color="#F2B84B"/>
+              <stop offset="100%" stop-color="#E0A840"/>
             </linearGradient>
             <radialGradient id="chipGlow" cx="50%" cy="50%" r="50%">
               <stop offset="0%" stop-color="#2BE9C7" stop-opacity="0.9"/>
@@ -194,38 +206,55 @@
             </radialGradient>
           </defs>
 
+          <!-- backdrop stage: gives the figure a grounded, designed backdrop -->
+          <rect x="0" y="0" width="200" height="220" fill="url(#stageGlow)"/>
+
           <!-- soft ground shadow -->
-          <ellipse cx="100" cy="211" rx="70" ry="8" fill="#000" opacity="0.28"/>
+          <ellipse cx="100" cy="212" rx="66" ry="7" fill="#000" opacity="0.3"/>
 
           <!-- torso / blazer -->
-          <path d="M34,220 Q36,146 100,133 Q164,146 166,220 Z" fill="url(#suitGrad)"/>
-          <path d="M34,220 Q36,146 100,133 Q164,146 166,220 Z" fill="none" stroke="rgba(242,184,75,0.22)" stroke-width="1"/>
+          <path d="M32,220 Q35,144 100,131 Q165,144 168,220 Z" fill="url(#suitGrad)"/>
 
-          <!-- lapels -->
-          <path d="M100,133 L82,165 L94,178 L100,150 Z" fill="#0e1324"/>
-          <path d="M100,133 L118,165 L106,178 L100,150 Z" fill="#0e1324"/>
+          <!-- lapels (clearly contrasting tone + gold piping so the suit reads as tailored, not a flat blob) -->
+          <path d="M100,131 L79,168 L92,183 L100,148 Z" fill="url(#lapelGrad)" stroke="#F2B84B" stroke-width="0.75" stroke-opacity="0.5"/>
+          <path d="M100,131 L121,168 L108,183 L100,148 Z" fill="url(#lapelGrad)" stroke="#F2B84B" stroke-width="0.75" stroke-opacity="0.5"/>
 
-          <!-- collar / tie accent -->
-          <path d="M92,134 L100,168 L108,134 L100,146 Z" fill="url(#collarGrad)"/>
+          <!-- shirt collar (light, peeking out beneath the lapels) -->
+          <path d="M91,136 L100,158 L94,168 L85,142 Z" fill="#e9ecf3"/>
+          <path d="M109,136 L100,158 L106,168 L115,142 Z" fill="#e9ecf3"/>
+
+          <!-- tie -->
+          <path d="M97,152 L103,152 L106,162 L100,214 L94,162 Z" fill="url(#collarGrad)"/>
 
           <!-- neck -->
           <rect x="90" y="112" width="20" height="26" rx="8" fill="url(#headGrad)"/>
 
           <!-- head -->
           <circle cx="100" cy="86" r="38" fill="url(#headGrad)"/>
+          <!-- subtle jaw shading for depth -->
+          <path d="M72,96 Q100,128 128,96 Q124,116 100,120 Q76,116 72,96 Z" fill="#b98a63" opacity="0.35"/>
 
-          <!-- simplified hair -->
-          <path d="M64,82 Q60,42 100,40 Q140,42 136,82 Q129,58 100,56 Q71,58 64,82 Z" fill="#161a26"/>
+          <!-- hair: warm dark tone (visible against the dark card) + rim highlight -->
+          <path d="M60,78 Q56,36 100,34 Q144,36 140,78 Q136,50 100,48 Q64,50 60,78 Z" fill="url(#hairGrad)"/>
+          <path d="M60,78 Q56,36 100,34 Q144,36 140,78" fill="none" stroke="#F2B84B" stroke-width="1.1" stroke-opacity="0.35"/>
 
-          <!-- rim light accents (ties the figure to the site's cinematic lighting) -->
-          <path d="M137,70 Q140,90 128,108" fill="none" stroke="#2BE9C7" stroke-width="2" stroke-linecap="round" opacity="0.55"/>
-          <path d="M166,150 Q170,185 160,214" fill="none" stroke="#F2B84B" stroke-width="2" stroke-linecap="round" opacity="0.4"/>
+          <!-- rimless glasses: adds a professional, modern-tech read without needing facial detail -->
+          <g stroke="#F2B84B" stroke-width="1.6" fill="none" opacity="0.85">
+            <rect x="74" y="82" width="24" height="17" rx="7"/>
+            <rect x="102" y="82" width="24" height="17" rx="7"/>
+            <line x1="98" y1="89" x2="102" y2="89"/>
+            <line x1="74" y1="88" x2="65" y2="85"/>
+            <line x1="126" y1="88" x2="135" y2="85"/>
+          </g>
+
+          <!-- rim light along the shoulder edge (anchored to the actual silhouette edge, not a floating line) -->
+          <path d="M168,220 Q166,180 152,155" fill="none" stroke="#2BE9C7" stroke-width="1.5" stroke-linecap="round" opacity="0.4"/>
 
           <!-- floating holographic insight chip: ties the portrait to the e-commerce/SEO theme -->
-          <g transform="translate(140,52)">
-            <circle cx="0" cy="0" r="26" fill="url(#chipGlow)"/>
-            <rect x="-20" y="-14" width="40" height="28" rx="8" fill="rgba(13,18,32,0.85)" stroke="#2BE9C7" stroke-width="1"/>
-            <polyline points="-13,6 -4,-2 4,3 13,-8" fill="none" stroke="#2BE9C7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <g transform="translate(146,50)">
+            <circle cx="0" cy="0" r="27" fill="url(#chipGlow)"/>
+            <rect x="-21" y="-15" width="42" height="29" rx="8" fill="rgba(13,18,32,0.9)" stroke="#2BE9C7" stroke-width="1"/>
+            <polyline points="-13,7 -4,-2 4,3 14,-9" fill="none" stroke="#2BE9C7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
           </g>
         </svg>
       </div>
@@ -447,5 +476,6 @@
   </div>
 </footer>
 
+<script src="script.js"></script>
 </body>
 </html>
